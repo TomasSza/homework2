@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+    <h2></h2>
+    <p></p>
+
+    <h4></h4>
+<button>DARTH VADER</button>
+
+<script> 
+    fetch("https://swapi.co/api/people/1").then(function(response){
+        return response.json()
+    }).then(function(data) {
+        console.log(data)
+        let h1Elem = document.querySelector("h1")
+        let h2Elem = document.querySelector("h2")
+        h1Elem.innerHTML = "Name: " + data.name
+        h2Elem.innerHTML = "Height: " + data.height
+    })
+  
+    let btn = document.querySelector("button")
+    btn.addEventListener("click", function() {
+        fetch('https://swapi.co/api/people/4/').then(function(res) {
+            return res.json()
+            
+        }).then(function(secondData){
+            console.log(secondData)
+            let h4Elem = document.querySelector("h4")
+            h4Elem.innerText = "Mass:" + secondData.mass
+        })
+    })
+</script> 
+</body>
+</html>
